@@ -8,14 +8,25 @@ function App() {
   const [page, setPage] = useState("search")
 
   return (
-    <div style={{padding:40}}>
+
+    <div style={{ padding: 40, fontFamily: "Arial" }}>
 
       <h1>ResearchHub AI</h1>
 
-      <div style={{marginBottom:20}}>
-        <button onClick={() => setPage("search")}>Search Papers</button>
-        <button onClick={() => setPage("workspace")}>Workspace</button>
-        <button onClick={() => setPage("chat")}>Chatbot</button>
+      <div style={{ marginBottom: 20 }}>
+
+        <button onClick={() => setPage("search")}>
+          Search Papers
+        </button>
+
+        <button onClick={() => setPage("workspace")} style={{ marginLeft: 10 }}>
+          Workspace
+        </button>
+
+        <button onClick={() => setPage("chat")} style={{ marginLeft: 10 }}>
+          Chatbot
+        </button>
+
       </div>
 
       {page === "search" && <SearchPapers />}
@@ -23,7 +34,9 @@ function App() {
       {page === "chat" && <Chatbot />}
 
     </div>
+
   )
+
 }
 
 export default App
