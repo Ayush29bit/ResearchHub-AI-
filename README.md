@@ -8,3 +8,64 @@
 ![Vite](https://img.shields.io/badge/Vite-BuildTool-646CFF?logo=vite)
 
 ResearchHub AI is an **Agentic AI-powered research assistant** that helps researchers efficiently discover, organize, and analyze academic papers. The system integrates external academic databases, vector embeddings, and large language models to provide contextual insights and summaries from research literature.
+
+## Features
+
+- Research paper discovery via **arXiv API**
+- AI-powered contextual research assistant
+- Semantic retrieval using **vector embeddings**
+- Workspace organization for research projects
+- Fast and responsive **React + TypeScript frontend**
+- **FastAPI backend** with modular architecture
+- Integration with **Groq Llama 3.3 70B LLM**
+
+---
+
+## System Architecture
+
+The system follows a modular architecture separating frontend, backend, AI services, and data storage.
+
+
+---
+
+## Tech Stack
+
+### Frontend
+- React
+- TypeScript
+- Vite
+- Axios
+
+### Backend
+- FastAPI
+- Python
+
+### AI / ML
+- Sentence Transformers
+- ChromaDB (Vector Database)
+- Groq API (Llama 3.3 70B)
+
+### Data Sources
+- arXiv API
+- pubmed API
+
+---
+
+
+---
+
+## Example Workflow
+
+1. Search research papers using the **Search Papers** page.
+2. Papers are retrieved from **arXiv API**.
+3. Paper summaries are converted into **vector embeddings**.
+4. Embeddings are stored in **ChromaDB**.
+5. Users ask research questions in the **AI Chatbot**.
+6. Relevant papers are retrieved and sent to the **LLM for contextual answers**.
+
+---
+
+## Author
+
+Developed as part of an **Agentic AI systems course project**.
+
