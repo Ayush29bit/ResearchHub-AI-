@@ -1,23 +1,22 @@
-import requests
-import xml.etree.ElementTree as ET
+from groq import Groq
 
-def search_arxiv(query):
+client = Groq(api_key="YOUR_GROQ_KEY")
 
-    url = f"http://export.arxiv.org/api/query?search_query=all:{query}&start=0&max_results=5"
-    response = requests.get(url)
+def ask_llm(question, context):
 
-    root = ET.fromstring(response.content)
+    prompt = f"""
+    Use the research papers below to answer the question.
 
-    papers = []
+    Context:
+    {context}
 
-    for entry in root.findall('{http://www.w3.org/2005/Atom}entry'):
+    Question:
+    {question}
+    """
 
-        title = entry.find('{http://www.w3.org/2005/Atom}title').text
-        summary = entry.find('{http://www.w3.org/2005/Atom}summary').text
+    completion = client.chat.completions.create(
+        model="llama3-70b-8192",
+        messages=[{"role": "user", "content": prompt}]
+    )
 
-        papers.append({
-            "title": title,
-            "summary": summary
-        })
-
-    return papers
+    return completion.choices[0].message.content
