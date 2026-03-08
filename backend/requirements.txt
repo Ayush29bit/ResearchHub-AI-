@@ -1,0 +1,36 @@
+fastapi
+uvicorn[standard]
+
+# HTTP requests
+
+requests
+
+# LLM
+
+groq
+
+# Embeddings
+
+sentence-transformers
+
+# Vector database
+
+chromadb
+
+# Database
+
+psycopg2-binary
+
+# Environment variables
+
+python-dotenv
+
+# Data validation
+
+pydantic
+
+# Optional utilities
+
+python-multipart
+python-jose
+passlib[bcrypt]
