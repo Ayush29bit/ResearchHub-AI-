@@ -1,0 +1,23 @@
+import requests
+import xml.etree.ElementTree as ET
+
+def search_arxiv(query):
+
+    url = f"http://export.arxiv.org/api/query?search_query=all:{query}&start=0&max_results=5"
+    response = requests.get(url)
+
+    root = ET.fromstring(response.content)
+
+    papers = []
+
+    for entry in root.findall('{http://www.w3.org/2005/Atom}entry'):
+
+        title = entry.find('{http://www.w3.org/2005/Atom}title').text
+        summary = entry.find('{http://www.w3.org/2005/Atom}summary').text
+
+        papers.append({
+            "title": title,
+            "summary": summary
+        })
+
+    return papers
