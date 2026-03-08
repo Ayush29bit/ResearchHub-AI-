@@ -25,6 +25,37 @@ ResearchHub AI is an **Agentic AI-powered research assistant** that helps resear
 
 The system follows a modular architecture separating frontend, backend, AI services, and data storage.
 
+              +----------------------+
+              |      React UI        |
+              |  (Vite + TypeScript) |
+              +----------+-----------+
+                         |
+                         | REST API (Axios)
+                         |
+              +----------v-----------+
+              |      FastAPI API     |
+              |   Backend Services   |
+              +----------+-----------+
+                         |
+         +---------------+----------------+
+         |                                |
+         |                                |
++--------v---------+            +---------v--------+
+|   arXiv API      |            |  Embedding Model |
+| (Paper Retrieval)|            | SentenceTransformers |
++------------------+            +---------+--------+
+                                          |
+                                          |
+                                +---------v--------+
+                                |    ChromaDB      |
+                                |  Vector Database |
+                                +---------+--------+
+                                          |
+                                          |
+                                +---------v--------+
+                                |      Groq LLM    |
+                                |  Llama 3.3 70B   |
+                                +------------------+
 
 ---
 
@@ -51,6 +82,51 @@ The system follows a modular architecture separating frontend, backend, AI servi
 
 ---
 
+## System Flow
+
+The workflow of the ResearchHub AI system:
+
+User Query
+   |
+   v
+React Frontend
+(Search / Chat Interface)
+   |
+   v
+FastAPI Backend
+   |
+   +----------------------+
+   |                      |
+   v                      v
+arXiv API           Workspace Manager
+(Paper Retrieval)        |
+   |                     |
+   v                     v
+Paper Summaries   Stored Research Papers
+   |
+   v
+Embedding Model
+(Sentence Transformers)
+   |
+   v
+Vector Database
+(ChromaDB)
+   |
+   v
+Similarity Search
+   |
+   v
+Relevant Paper Context
+   |
+   v
+LLM Reasoning
+(Groq - Llama 3.3 70B)
+   |
+   v
+AI Generated Answer
+   |
+   v
+Returned to Frontend
 
 ---
 
@@ -68,4 +144,6 @@ The system follows a modular architecture separating frontend, backend, AI servi
 ## Author
 
 Developed as part of an **Agentic AI systems course project**.
+
+
 
